@@ -1,0 +1,51 @@
+body {
+    background-color: skyblue;
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    text-align: center;
+    padding-top: 100px;
+}
+
+.logo img {
+    width: 230px;
+    height: auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    margin:  auto;
+    margin-top: 20px;
+}
+
+form input {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.login{
+	font-size: 17px;
+	border: solid 2px;
+	border-radius: 10px;
+}
+
+form button {
+	font-size: 17px;
+	border: solid 1px;
+	border-radius: 10px;
+	width: 200px;
+	display: block;
+	margin: auto;
+}
+
+.fpass {
+	font-size: 16px;
+	color: black;
+}
+
+
+
