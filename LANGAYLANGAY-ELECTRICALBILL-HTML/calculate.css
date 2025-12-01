@@ -23,44 +23,7 @@ h1 {
     border-bottom: solid 6px;
 }
 
-.profile-logo {
-    width: 130px;
-    height: 130px;
-}
-
-.profile-button {
-    border: solid 2px;
-    padding: 0 30px;
-    padding-top:  5px;
-    padding-bottom: 5px;
-    font-size: 20px;
-    font-style: italic;
-    color: black;
-    border-color: black;
-    border-radius: 13px;
-    background: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.home-profile {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-}
-
-.dashboard {
-    width: fit-content;
-    font-size: 30px;
-    font-style: italic;
-    font-weight: bold;
-    border: 2px solid black;
-    border-radius: 10px;
-    background: white;
-    padding: 10px 50px;
-    margin-left: 280px;
-
-}
+ 
 
 .nav-menu {
     display: flex;
@@ -101,19 +64,47 @@ h1 {
     height: 70px;
 }
 
-.dashboard-container {
-
-    margin-left: 90px; 
-    margin-top: -550px;
+form {
     display: flex;
-    justify-content: center;
-
+    flex-direction: column;
+    align-items: block;
+    gap: 11px;
+    font-size: 20px;
+    border: solid;
+    padding: 60px 230px;
+    margin: -514px 450px ;
+    background-color: lightblue;
+    border-radius: 10px;
+    text-align: left;
 
 }
 
-.dashboard-img {
-    width: 1000px;
-    height: auto;
-    object-fit: cover;
+form input {
+    padding: 5px;
+    border: solid 2px;
+    border-radius: 10px;
+    font-weight: bold;
+}
 
+.calculate-page {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+label {
+    font-weight: bold;
+}
+
+form .submit-reset {
+    display: flex;
+    gap: 90px;
+    padding-top: 20px;
+}
+
+form .cal-submit , .cal-reset {
+    border: black solid 1px;
+    padding: 5px;
+    background: black;
+    color: white;
 }

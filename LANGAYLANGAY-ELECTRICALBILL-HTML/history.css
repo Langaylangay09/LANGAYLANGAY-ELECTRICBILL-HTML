@@ -23,33 +23,7 @@ h1 {
     border-bottom: solid 6px;
 }
 
-.profile-logo {
-    width: 130px;
-    height: 130px;
-}
-
-.profile-button {
-    border: solid 2px;
-    padding: 0 30px;
-    padding-top:  5px;
-    padding-bottom: 5px;
-    font-size: 20px;
-    font-style: italic;
-    color: black;
-    border-color: black;
-    border-radius: 13px;
-    background: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.home-profile {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-}
-
-.dashboard {
+h2 {
     width: fit-content;
     font-size: 30px;
     font-style: italic;
@@ -58,8 +32,9 @@ h1 {
     border-radius: 10px;
     background: white;
     padding: 10px 50px;
-    margin-left: 280px;
-
+    margin-left: 650px;
+    margin-top: 60px;
+    align-content: center;
 }
 
 .nav-menu {
@@ -101,19 +76,28 @@ h1 {
     height: 70px;
 }
 
-.dashboard-container {
-
-    margin-left: 90px; 
-    margin-top: -550px;
-    display: flex;
-    justify-content: center;
-
-
+.history-table, th, td {
+    border: solid 2px;
+    border-width: solid 2px;
+    border-collapse: collapse;
+    margin-left: 545px;
+    margin-top: -514px;
+    background: lightblue;
+    font-size: 20px;
 }
 
-.dashboard-img {
-    width: 1000px;
-    height: auto;
-    object-fit: cover;
+td {
+    padding: 30px;
+}
 
+tr {
+    padding: 20px;
+}
+
+.history-table {
+    border: solid 1px;
+}
+
+tr a {
+    margin-right: 10px;
 }
