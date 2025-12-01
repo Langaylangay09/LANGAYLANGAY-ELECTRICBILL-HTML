@@ -39,7 +39,7 @@ form button {
 
 .user-login, .pass-login {
     font-size: 17px;
-    border: solid 2px;
+    border: solid 1px;
     border-radius: 10px;
 }
 
@@ -82,7 +82,7 @@ form button {
     display: flex;
     align-items: center;
     gap: 20px;
-    border: solid 2px;
+    border: solid 1px;
     border-radius: 8px;
     cursor: pointer;
     font-size: 20px;
