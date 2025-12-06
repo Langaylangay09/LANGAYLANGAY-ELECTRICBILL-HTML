@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>History</title>
+    <link rel="stylesheet" href="history.css">
+</head>
+<body>
+    <div class="top">
+        <img src="logo.png" alt="logo" class="home-logo">
+        <h1>ELECTRIC BILL CALCULATOR</h1>
+    </div>
+
+        <h2>Save Result History</h2>
+
+    <nav class="nav-menu">
+    <ul>
+        <li><a href="Home.html"><img src="home-logo.png" alt="Home" class="nav-icon">Home</a></li>
+        <li><a href="calculate.html"><img src="calculate-logo.png" alt="Calculate" class="nav-icon">Calculate</a></li>
+        <li><a href="#"><img src="history-logo.png" alt="History" class="nav-icon">History</a></li>
+    </ul>
+    </nav>
+
+    <table class="history-table">
+        <tr>
+            <th>Month</th>
+            <th>kWh</th>
+            <th>Rate(₱)</th>
+            <th>Total(₱)</th>
+            <th>Actions</th>
+        </tr>
+        <tbody class="history-body">
+
+        </tbody>
+    </table>
+
+    <script>
+
+        window.addEventListener('load', function() {
+            loadHistory();
+            console.log('History page loaded');
+        });
+
+
+        function loadHistory() {
+            const history = JSON.parse(localStorage.getItem('billHistory')) || [];
+            const historyBody = document.querySelector('.history-body');
+            historyBody.innerHTML = '';
+
+            if (history.length === 0) {
+                historyBody.innerHTML = '<tr><td colspan="5" style="text-align: center;">No calculation history yet</td></tr>';
+                return;
+            }
+
+            history.forEach((item, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.month}</td>
+                    <td>${item.powerConsumption}</td>
+                    <td>${item.costPerKw}</td>
+                    <td>${item.totalBill}</td>
+                    <td class="action">
+                        <a href="#" class="view-btn" data-index="${index}">view</a>
+                        <a href="#" class="delete-btn" data-index="${index}">delete</a>
+                    </td>
+                `;
+                historyBody.appendChild(row);
+            });
+
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const index = this.getAttribute('data-index');
+                    deleteRecord(index);
+                });
+            });
+
+
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const index = this.getAttribute('data-index');
+                    viewRecord(index);
+                });
+            });
+        }
+
+
+        function deleteRecord(index) {
+            if (confirm('Are you sure you want to delete this record?')) {
+                let history = JSON.parse(localStorage.getItem('billHistory')) || [];
+                history.splice(index, 1);
+                localStorage.setItem('billHistory', JSON.stringify(history));
+                loadHistory();
+                console.log('Record deleted at index:', index);
+            }
+        }
+
+
+        function viewRecord(index) {
+            const history = JSON.parse(localStorage.getItem('billHistory')) || [];
+            const record = history[index];
+            alert(`Month: ${record.month}\nPower Consumption: ${record.powerConsumption} kWh\nCost per kW: ₱${record.costPerKw}\nTotal Bill: ₱${record.totalBill}\nDate: ${record.date}`);
+            console.log('Viewed record:', record);
+        }
+    </script>
+
+</body>
+</html>

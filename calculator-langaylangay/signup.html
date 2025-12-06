@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Create acoount</title>
+  <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+
+    <div class="top">
+        <img src="logo.png" alt="logo" class="home-logo">
+        <h1>ELECTRIC BILL CALCULATOR</h1>
+    </div>
+
+     <form id="signupForm">
+        <label class="email-text">Create account</label>
+        <input type="text" id="username" placeholder="Username" class="create-acc" required>
+        <input type="password" id="password" placeholder="Password" class="create-acc" required>
+        <input type="password" id="confirmPassword" placeholder="Confirm password" class="create-acc" required>
+        <input type="text" id="contactNumber" placeholder="Contact number" class="create-acc" required>
+        <input type="text" id="verificationCode" placeholder="Verification code" class="create-acc" required>
+        <input type="text" id="country" placeholder="Country" class="create-acc" required>
+        <input type="text" id="province" placeholder="Province" class="create-acc" required>
+        <input type="text" id="barangay" placeholder="Barangay" class="create-acc" required>
+        <input type="text" id="address" placeholder="House No./Bldg./Street name" class="create-acc" required>
+        <button type="button" class="confirm-btn" onclick="handleSignup()">confirm</button>
+      </form>
+
+  <script>
+    function handleSignup() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      const contactNumber = document.getElementById('contactNumber').value;
+      const verificationCode = document.getElementById('verificationCode').value;
+      const country = document.getElementById('country').value;
+      const province = document.getElementById('province').value;
+      const barangay = document.getElementById('barangay').value;
+      const address = document.getElementById('address').value;
+
+
+      if (!username || !password || !confirmPassword || !contactNumber || !verificationCode || !country || !province || !barangay || !address) {
+        alert('Please fill in all fields');
+        return;
+      }
+
+
+      if (username.length < 3) {
+        alert('Username must be at least 3 characters long');
+        return;
+      }
+
+
+      if (password.length < 6) {
+        alert('Password must be at least 6 characters long');
+        return;
+      }
+
+
+      if (password !== confirmPassword) {
+        alert('Passwords do not match');
+        return;
+      }
+
+
+      if (contactNumber.length < 10) {
+        alert('Contact number must be at least 10 digits');
+        return;
+      }
+
+
+      if (verificationCode.length < 4) {
+        alert('Verification code must be at least 4 characters');
+        return;
+      }
+
+
+      window.location.href = 'Home.html';
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Calculate</title>
+  <link rel="stylesheet" href="calculate.css">
+</head>
+<body>
+
+    <div class="top">
+        <img src="logo.png" alt="logo" class="home-logo">
+        <h1>ELECTRIC BILL CALCULATOR</h1>
+    </div>
+
+    <nav class="nav-menu">
+    <ul>
+        <li><a href="Home.html"><img src="home-logo.png" alt="Home" class="nav-icon">Home</a></li>
+        <li><a href="calculate.html"><img src="calculate-logo.png" alt="Calculate" class="nav-icon">Calculate</a></li>
+        <li><a href="history.html"><img src="history-logo.png" alt="History" class="nav-icon">History</a></li>
+    </ul>
+    </nav>
+
+    <form class="calculate-page">
+        
+        <label>Month</label>
+        <input type="month" class="cal-month">
+        <label>Power Consumption (kWh)</label>
+        <input type="number" class="power-con" min="0" step="0.01">
+        <label>Cost per kilowatt-hour</label>
+        <input type="number" class="cost-kw" min="0" step="0.01">
+        <label class="cal-total-text">Total bill:</label>
+        <input type="text" placeholder="Total" class="cal-total" readonly>
+
+            <div class="submit-reset">
+                <input type="submit" class="cal-submit" value="Calculate">
+                <input type="reset" class="cal-reset" value="Reset">
+            </div>
+    </form>
+
+    <script>
+        const monthInput = document.querySelector('.cal-month');
+        const powerConInput = document.querySelector('.power-con');
+        const costKwInput = document.querySelector('.cost-kw');
+        const totalOutput = document.querySelector('.cal-total');
+        const submitBtn = document.querySelector('.cal-submit');
+        const resetBtn = document.querySelector('.cal-reset');
+
+        function calculateBill() {
+            const powerCon = parseFloat(powerConInput.value) || 0;
+            const costKw = parseFloat(costKwInput.value) || 0;
+            const total = (powerCon * costKw).toFixed(2);
+            totalOutput.value = total;
+        }
+
+        powerConInput.addEventListener('input', calculateBill);
+        costKwInput.addEventListener('input', calculateBill);
+
+        submitBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const month = monthInput.value;
+            const powerCon = powerConInput.value;
+            const costKw = costKwInput.value;
+            const total = totalOutput.value;
+
+            if (!month || !powerCon || !costKw) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            const calculation = {
+                month: month,
+                powerConsumption: powerCon,
+                costPerKw: costKw,
+                totalBill: total,
+                date: new Date().toLocaleString()
+            };
+
+            let history = JSON.parse(localStorage.getItem('billHistory')) || [];
+            history.push(calculation);
+            localStorage.setItem('billHistory', JSON.stringify(history));
+
+            alert('Calculation saved to history');
+            console.log('Calculation saved:', calculation);
+        });
+
+        resetBtn.addEventListener('click', function() {
+            totalOutput.value = '';
+            console.log('Form reset');
+        });
+
+        window.addEventListener('load', function() {
+            console.log('Calculate page loaded');
+        });
+    </script>
+
+</body>
+</html>
